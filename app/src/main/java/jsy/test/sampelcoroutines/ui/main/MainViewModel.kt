@@ -60,7 +60,9 @@ class MainViewModel : ViewModel() {
         }
 
         doSomethingInteger {
-            it*3
+//            it*3 // 126 return
+
+            5// 5 return
         }
     }
 
@@ -81,7 +83,7 @@ class MainViewModel : ViewModel() {
     }
 
     private fun doSomethingInteger(intCallback: (Int) -> Int) {
-        val result = intCallback(42)
+        val result = intCallback(42) // 42 Return 이후 콜백 받은 부분에서 처리한 Int값으로 result 출력됨
         Log.d("doSomethingInteger","$result")
     }
 }
