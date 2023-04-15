@@ -25,7 +25,7 @@ class MainFragment : Fragment() {
 
 
         CoroutineScope(Dispatchers.IO).launch { viewModel.printNumbers() }
-        viewModel.runNumbersFlow()
+//        viewModel.runNumbersFlow()
     }
 
     override fun onCreateView(

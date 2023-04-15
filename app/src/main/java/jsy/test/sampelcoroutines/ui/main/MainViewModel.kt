@@ -1,5 +1,6 @@
 package jsy.test.sampelcoroutines.ui.main
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -48,6 +49,39 @@ class MainViewModel : ViewModel() {
             delay(1000)
             emit(i)
         }
+
+        doSomethingInt {
+            val testInt = getInt() //매개변수인 Int값 필요
+            Log.d("doSomethingInt","$testInt")
+        }
+
+        doSomething {
+            it*3
+        }
+
+        doSomethingInteger {
+            it*3
+        }
     }
 
+
+    private fun getInt(): Int {
+        return 42
+    }
+    private fun doSomethingInt(intCallback : () -> Int ){ // Int가 매개변수
+        intCallback()
+    }
+
+
+    /* Int는 입력값, 반환값은 없음 */
+    // Unit은 반환값이 없음!  callback에 (Int)를 태우는 function
+    private fun doSomething(intCallback : (Int) -> Unit) {
+        val result = intCallback(42)
+        Log.d("doSomething","$result")
+    }
+
+    private fun doSomethingInteger(intCallback: (Int) -> Int) {
+        val result = intCallback(42)
+        Log.d("doSomethingInteger","$result")
+    }
 }
